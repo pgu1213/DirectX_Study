@@ -11,11 +11,6 @@
 *.gch
 *.pch
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
 # Fortran module files
 *.mod
 *.smod
@@ -24,9 +19,30 @@
 *.lai
 *.la
 *.a
-*.lib
 
 # Executables
 *.exe
 *.out
 *.app
+*.pdb
+*.exe.config
+
+# Log files
+*.tlog
+
+# Visual Studio Code related files.
+**/.vscode/
+
+# IntelliJ related files.
+*.iml
+**/.idea/
+
+# Visual C++ cache files
+*.vsidx
+.vs/
+ipch/
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.cachefile
