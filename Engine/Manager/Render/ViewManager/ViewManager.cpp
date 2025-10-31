@@ -12,7 +12,6 @@ ViewManager::ViewManager()
 
 ViewManager::~ViewManager()
 {
-    // 생성한 COM 객체가 없으므로 해제할 것도 없습니다.
 }
 
 bool ViewManager::Initialize(ID3D11DeviceContext* context, int screenWidth, int screenHeight, float screenNear, float screenDepth)
@@ -21,7 +20,7 @@ bool ViewManager::Initialize(ID3D11DeviceContext* context, int screenWidth, int 
     m_screenNear = screenNear;     // OnResize를 위해 저장
     m_screenDepth = screenDepth;  // OnResize를 위해 저장
 
-    // --- 1. 뷰포트 설정 (기존 코드 Block 9 일부) ---
+    // 뷰포트 설정
     m_viewport.Width = (float)screenWidth;
     m_viewport.Height = (float)screenHeight;
     m_viewport.MinDepth = 0.0f;
@@ -32,8 +31,8 @@ bool ViewManager::Initialize(ID3D11DeviceContext* context, int screenWidth, int 
     // 뷰포트를 파이프라인(Rasterizer Stage)에 설정
     m_deviceContext->RSSetViewports(1, &m_viewport);
 
-    // --- 2. 투영 행렬 생성 (기존 코드 Block 9 일부) ---
-    // (월드 행렬 초기화는 개별 오브젝트의 몫이므로 여기서 제외)
+    // 투영 행렬 생성
+    // 월드 행렬 초기화는 제외 (오브젝트에서 구현 예정)
     UpdateMatrices(screenWidth, screenHeight);
 
     return true;
@@ -42,12 +41,12 @@ bool ViewManager::Initialize(ID3D11DeviceContext* context, int screenWidth, int 
 // 윈도우 크기가 변경될 때 호출
 void ViewManager::OnResize(int newWidth, int newHeight)
 {
-    // 1. 뷰포트 크기 갱신 및 파이프라인에 재설정
+    // 뷰포트 크기 갱신 및 파이프라인에 재설정
     m_viewport.Width = (float)newWidth;
     m_viewport.Height = (float)newHeight;
     m_deviceContext->RSSetViewports(1, &m_viewport);
 
-    // 2. 갱신된 종횡비로 투영 행렬 재생성
+    // 갱신된 종횡비로 투영 행렬 재생성
     UpdateMatrices(newWidth, newHeight);
 }
 

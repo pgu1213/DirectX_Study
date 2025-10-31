@@ -1,7 +1,6 @@
 #pragma once
 #include <Engine/Object/IPrototypeable/IPrototypeable.h>
 #include <Engine/Object/Component/Component.h>
-#include <Struct.h>
 
 class Component;
 

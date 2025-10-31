@@ -137,6 +137,7 @@
     <ClInclude Include="Engine\Manager\InputManager\InputManager.h" />
     <ClInclude Include="Header\Extern.h" />
     <ClInclude Include="Engine\Object\Object\Object.h" />
+    <ClInclude Include="Header\Struct.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Engine\Manager\Render\PipelineStateManager\PipelineStateManager.h" />
     <ClInclude Include="Resource.h" />

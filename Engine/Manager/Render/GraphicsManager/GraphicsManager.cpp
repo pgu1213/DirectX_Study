@@ -11,10 +11,6 @@ GraphicsManager::GraphicsManager()
     m_videoCardDescription[0] = '\0';
 }
 
-GraphicsManager::GraphicsManager(const GraphicsManager& other)
-{
-}
-
 GraphicsManager::~GraphicsManager()
 {
     Shutdown();

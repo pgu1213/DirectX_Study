@@ -8,10 +8,6 @@ PipelineStateManager::PipelineStateManager()
     m_deviceContext = nullptr;
 }
 
-PipelineStateManager::PipelineStateManager(const PipelineStateManager& other)
-{
-}
-
 PipelineStateManager::~PipelineStateManager()
 {
     Shutdown();

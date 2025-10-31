@@ -12,10 +12,6 @@ SwapChainManager::SwapChainManager()
     m_vsync_enabled = false;
 }
 
-SwapChainManager::SwapChainManager(const SwapChainManager& other)
-{
-}
-
 SwapChainManager::~SwapChainManager()
 {
     Shutdown();

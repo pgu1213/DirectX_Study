@@ -1,2 +1,14 @@
+C:\Study\DirectX_Study\DirectX_Study\Engine\Manager\PrototypeManager\PrototypeFactory\PrototypeFactory.cpp;C:\Study\DirectX_Study\DirectX_Study\x64\Debug\PrototypeFactory.obj
+C:\Study\DirectX_Study\DirectX_Study\Engine\Manager\PrototypeManager\PrototypeManager.cpp;C:\Study\DirectX_Study\DirectX_Study\x64\Debug\PrototypeManager.obj
+C:\Study\DirectX_Study\DirectX_Study\Engine\Object\Component\Component.cpp;C:\Study\DirectX_Study\DirectX_Study\x64\Debug\Component.obj
 C:\Study\DirectX_Study\DirectX_Study\DirectX_Study.cpp;C:\Study\DirectX_Study\DirectX_Study\x64\Debug\DirectX_Study.obj
 C:\Study\DirectX_Study\DirectX_Study\Engine\Engine\EngineSystem.cpp;C:\Study\DirectX_Study\DirectX_Study\x64\Debug\EngineSystem.obj
+C:\Study\DirectX_Study\DirectX_Study\Engine\Manager\TimeManager\TimeManager.cpp;C:\Study\DirectX_Study\DirectX_Study\x64\Debug\TimeManager.obj
+C:\Study\DirectX_Study\DirectX_Study\Engine\Manager\InputManager\InputManager.cpp;C:\Study\DirectX_Study\DirectX_Study\x64\Debug\InputManager.obj
+C:\Study\DirectX_Study\DirectX_Study\Engine\Object\IPrototypeable\IPrototypeable.cpp;C:\Study\DirectX_Study\DirectX_Study\x64\Debug\IPrototypeable.obj
+C:\Study\DirectX_Study\DirectX_Study\Engine\Object\Object\Object.cpp;C:\Study\DirectX_Study\DirectX_Study\x64\Debug\Object.obj
+C:\Study\DirectX_Study\DirectX_Study\Engine\Object\UI\UI.cpp;C:\Study\DirectX_Study\DirectX_Study\x64\Debug\UI.obj
+C:\Study\DirectX_Study\DirectX_Study\Engine\Manager\Render\GraphicsManager\GraphicsManager.cpp;C:\Study\DirectX_Study\DirectX_Study\x64\Debug\GraphicsManager.obj
+C:\Study\DirectX_Study\DirectX_Study\Engine\Manager\Render\SwapChainManager\SwapChainManager.cpp;C:\Study\DirectX_Study\DirectX_Study\x64\Debug\SwapChainManager.obj
+C:\Study\DirectX_Study\DirectX_Study\Engine\Manager\Render\PipelineStateManager\PipelineStateManager.cpp;C:\Study\DirectX_Study\DirectX_Study\x64\Debug\PipelineStateManager.obj
+C:\Study\DirectX_Study\DirectX_Study\Engine\Manager\Render\ViewManager\ViewManager.cpp;C:\Study\DirectX_Study\DirectX_Study\x64\Debug\ViewManager.obj

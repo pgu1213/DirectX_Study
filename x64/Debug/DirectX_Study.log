@@ -1,27 +1,6 @@
 ﻿  PrototypeFactory.cpp
-C:\Study\DirectX_Study\DirectX_Study\Engine\Object\Object\Object.h(4,10): error C1083: 포함 파일을 열 수 없습니다. 'Struct.h': No such file or directory
-  (소스 파일 'Engine/Manager/PrototypeManager/PrototypeFactory/PrototypeFactory.cpp'을(를) 컴파일하는 중)
-  
   PrototypeManager.cpp
-C:\Study\DirectX_Study\DirectX_Study\Engine\Object\Object\Object.h(4,10): error C1083: 포함 파일을 열 수 없습니다. 'Struct.h': No such file or directory
-  (소스 파일 'Engine/Manager/PrototypeManager/PrototypeManager.cpp'을(를) 컴파일하는 중)
-  
   Component.cpp
-C:\Study\DirectX_Study\DirectX_Study\Engine\Object\IPrototypeable\IPrototypeable.h(8,23): error C2143: 구문 오류: ';'이(가) '<' 앞에 없습니다.
-  (소스 파일 'Engine/Object/Component/Component.cpp'을(를) 컴파일하는 중)
-  
-C:\Study\DirectX_Study\DirectX_Study\Engine\Object\IPrototypeable\IPrototypeable.h(8,13): error C2433: 'IPrototypeable::unique_ptr': 데이터 선언에 'virtual'을(를) 사용할 수 없습니다.
-  (소스 파일 'Engine/Object/Component/Component.cpp'을(를) 컴파일하는 중)
-  
-C:\Study\DirectX_Study\DirectX_Study\Engine\Object\IPrototypeable\IPrototypeable.h(8,13): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
-  (소스 파일 'Engine/Object/Component/Component.cpp'을(를) 컴파일하는 중)
-  
-C:\Study\DirectX_Study\DirectX_Study\Engine\Object\IPrototypeable\IPrototypeable.h(8,57): error C2238: ';' 앞에 예기치 않은 토큰이 있습니다.
-  (소스 파일 'Engine/Object/Component/Component.cpp'을(를) 컴파일하는 중)
-  
-C:\Study\DirectX_Study\DirectX_Study\Engine\Object\Object\Object.h(4,10): error C1083: 포함 파일을 열 수 없습니다. 'Struct.h': No such file or directory
-  (소스 파일 'Engine/Object/Component/Component.cpp'을(를) 컴파일하는 중)
-  
   DirectX_Study.cpp
 C:\Study\DirectX_Study\DirectX_Study\DirectX_Study.cpp(98,1): warning C4002: 함수 같은 매크로 호출 'CreateWindowW'에 대해 인수가 너무 많습니다.
   EngineSystem.cpp
@@ -29,38 +8,10 @@ C:\Study\DirectX_Study\DirectX_Study\DirectX_Study.cpp(98,1): warning C4002: 함
   InputManager.cpp
   IPrototypeable.cpp
   Object.cpp
-C:\Study\DirectX_Study\DirectX_Study\Engine\Object\IPrototypeable\IPrototypeable.h(8,23): error C2143: 구문 오류: ';'이(가) '<' 앞에 없습니다.
-  (소스 파일 'Engine/Object/Object/Object.cpp'을(를) 컴파일하는 중)
-  
-C:\Study\DirectX_Study\DirectX_Study\Engine\Object\IPrototypeable\IPrototypeable.h(8,13): error C2433: 'IPrototypeable::unique_ptr': 데이터 선언에 'virtual'을(를) 사용할 수 없습니다.
-  (소스 파일 'Engine/Object/Object/Object.cpp'을(를) 컴파일하는 중)
-  
-C:\Study\DirectX_Study\DirectX_Study\Engine\Object\IPrototypeable\IPrototypeable.h(8,13): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
-  (소스 파일 'Engine/Object/Object/Object.cpp'을(를) 컴파일하는 중)
-  
-C:\Study\DirectX_Study\DirectX_Study\Engine\Object\IPrototypeable\IPrototypeable.h(8,57): error C2238: ';' 앞에 예기치 않은 토큰이 있습니다.
-  (소스 파일 'Engine/Object/Object/Object.cpp'을(를) 컴파일하는 중)
-  
-C:\Study\DirectX_Study\DirectX_Study\Engine\Object\Component\Component.h(20,25): error C2061: 구문 오류: 식별자 'HDC'
-  (소스 파일 'Engine/Object/Object/Object.cpp'을(를) 컴파일하는 중)
-  
-C:\Study\DirectX_Study\DirectX_Study\Engine\Object\Component\Component.h(25,15): error C2143: 구문 오류: ';'이(가) '<' 앞에 없습니다.
-  (소스 파일 'Engine/Object/Object/Object.cpp'을(를) 컴파일하는 중)
-  
-C:\Study\DirectX_Study\DirectX_Study\Engine\Object\Component\Component.h(25,5): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
-  (소스 파일 'Engine/Object/Object/Object.cpp'을(를) 컴파일하는 중)
-  
-C:\Study\DirectX_Study\DirectX_Study\Engine\Object\Component\Component.h(25,54): error C2238: ';' 앞에 예기치 않은 토큰이 있습니다.
-  (소스 파일 'Engine/Object/Object/Object.cpp'을(를) 컴파일하는 중)
-  
-C:\Study\DirectX_Study\DirectX_Study\Engine\Object\Object\Object.h(4,10): error C1083: 포함 파일을 열 수 없습니다. 'Struct.h': No such file or directory
-  (소스 파일 'Engine/Object/Object/Object.cpp'을(를) 컴파일하는 중)
-  
-  UI.cpp
   GraphicsManager.cpp
-C:\Study\DirectX_Study\DirectX_Study\Engine\Manager\Render\GraphicsManager\GraphicsManager.cpp(14,18): error C2600: 'GraphicsManager::GraphicsManager': 컴파일러 생성 특수 멤버 함수를 정의할 수 없습니다. 먼저 클래스에 선언해야 합니다.
   SwapChainManager.cpp
   PipelineStateManager.cpp
   ViewManager.cpp
   코드를 생성하고 있습니다...
 C:\Study\DirectX_Study\DirectX_Study\DirectX_Study.cpp(66,1): warning C4715: 'wWinMain': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  DirectX_Study.vcxproj -> C:\Study\DirectX_Study\x64\Debug\DirectX_Study.exe
