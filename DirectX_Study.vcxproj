@@ -125,33 +125,43 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Manager\PrototypeManager\PrototypeFactory\PrototypeFactory.h" />
+    <ClInclude Include="Engine\Manager\PrototypeManager\PrototypeManager.h" />
     <ClInclude Include="Engine\Object\Component\Component.h" />
-    <ClInclude Include="Engine\D3D\D3DClass\D3DClass.h" />
     <ClInclude Include="DirectX_Study.h" />
     <ClInclude Include="Engine\Engine\EngineSystem.h" />
+    <ClInclude Include="Engine\Object\IPrototypeable\IPrototypeable.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="Engine\D3D\GraphicsClass\GraphicsClass.h" />
+    <ClInclude Include="Engine\Manager\Render\GraphicsManager\GraphicsManager.h" />
     <ClInclude Include="Header\Define.h" />
     <ClInclude Include="Engine\Manager\InputManager\InputManager.h" />
     <ClInclude Include="Header\Extern.h" />
     <ClInclude Include="Engine\Object\Object\Object.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Engine\Manager\Render\PipelineStateManager\PipelineStateManager.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Engine\Manager\SingletonManager\Singleton.h" />
+    <ClInclude Include="Engine\Manager\Render\SwapChainManager\SwapChainManager.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Engine\Manager\TimeManager\TimeManager.h" />
     <ClInclude Include="Engine\Object\UI\UI.h" />
+    <ClInclude Include="Engine\Manager\Render\ViewManager\ViewManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Manager\PrototypeManager\PrototypeFactory\PrototypeFactory.cpp" />
+    <ClCompile Include="Engine\Manager\PrototypeManager\PrototypeManager.cpp" />
     <ClCompile Include="Engine\Object\Component\Component.cpp" />
-    <ClCompile Include="Engine\D3D\D3DClass\D3DClass.cpp" />
     <ClCompile Include="DirectX_Study.cpp" />
     <ClCompile Include="Engine\Engine\EngineSystem.cpp" />
-    <ClCompile Include="Engine\D3D\GraphicsClass\GraphicsClass.cpp" />
     <ClCompile Include="Engine\Manager\TimeManager\TimeManager.cpp" />
     <ClCompile Include="Engine\Manager\InputManager\InputManager.cpp" />
+    <ClCompile Include="Engine\Object\IPrototypeable\IPrototypeable.cpp" />
     <ClCompile Include="Engine\Object\Object\Object.cpp" />
     <ClCompile Include="Engine\Object\UI\UI.cpp" />
+    <ClCompile Include="Engine\Manager\Render\GraphicsManager\GraphicsManager.cpp" />
+    <ClCompile Include="Engine\Manager\Render\SwapChainManager\SwapChainManager.cpp" />
+    <ClCompile Include="Engine\Manager\Render\PipelineStateManager\PipelineStateManager.cpp" />
+    <ClCompile Include="Engine\Manager\Render\ViewManager\ViewManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DirectX_Study.rc" />

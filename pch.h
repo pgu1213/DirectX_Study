@@ -15,6 +15,8 @@ using namespace std;
 #include <dxgi.h>
 #include <DirectXMath.h>
 
+using namespace DirectX;
+
 #include "Header/Define.h"
 #include "Header/Extern.h"
 

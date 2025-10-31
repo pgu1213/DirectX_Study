@@ -39,12 +39,6 @@
     <ClInclude Include="Engine\Manager\SingletonManager\Singleton.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\D3D\D3DClass\D3DClass.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\D3D\GraphicsClass\GraphicsClass.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Manager\TimeManager\TimeManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -63,18 +57,33 @@
     <ClInclude Include="Engine\Object\UI\UI.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Manager\PrototypeManager\PrototypeManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Manager\PrototypeManager\PrototypeFactory\PrototypeFactory.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Object\IPrototypeable\IPrototypeable.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Manager\Render\GraphicsManager\GraphicsManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Manager\Render\SwapChainManager\SwapChainManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Manager\Render\PipelineStateManager\PipelineStateManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Manager\Render\ViewManager\ViewManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DirectX_Study.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Engine\EngineSystem.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\D3D\D3DClass\D3DClass.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\D3D\GraphicsClass\GraphicsClass.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Manager\TimeManager\TimeManager.cpp">
@@ -90,6 +99,27 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Object\UI\UI.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Manager\PrototypeManager\PrototypeManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Manager\PrototypeManager\PrototypeFactory\PrototypeFactory.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Object\IPrototypeable\IPrototypeable.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Manager\Render\GraphicsManager\GraphicsManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Manager\Render\SwapChainManager\SwapChainManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Manager\Render\PipelineStateManager\PipelineStateManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Manager\Render\ViewManager\ViewManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

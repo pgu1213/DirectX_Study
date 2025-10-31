@@ -1,0 +1,54 @@
+#pragma once
+
+class SwapChainManager
+{
+public:
+    SwapChainManager();
+    SwapChainManager(const SwapChainManager&);
+    ~SwapChainManager();
+
+    // GraphicsDeviceManager로부터 핵심 객체들을 받아 초기화합니다.
+    bool Initialize(
+        ID3D11Device* device,
+        ID3D11DeviceContext* context,
+        IDXGISwapChain* swapChain,
+        int screenWidth,
+        int screenHeight,
+        bool vsync
+    );
+
+    // 소유한 COM 객체들을 해제합니다.
+    void Shutdown();
+
+    // 윈도우 크기 변경 시 호출될 함수입니다.
+    bool OnResize(int newWidth, int newHeight);
+
+    // 렌더링 시작 시 렌더 타겟과 깊이 버퍼를 클리어합니다.
+    void ClearRenderTargets(float red, float green, float blue, float alpha);
+
+    // 렌더링 완료 후 스왑 체인을 화면에 표시합니다.
+    void Present();
+
+    // 외부(예: 렌더러)에서 현재 RTV와 DSV를 가져갈 수 있도록 Getter를 제공합니다.
+    ID3D11RenderTargetView* GetRenderTargetView() const { return m_renderTargetView; }
+    ID3D11DepthStencilView* GetDepthStencilView() const { return m_depthStencilView; }
+
+private:
+    // 깊이/스텐실 버퍼와 뷰를 생성하는 내부 헬퍼 함수입니다.
+    // (Initialize와 OnResize에서 중복 사용됨)
+    bool CreateDepthStencilResources(int width, int height);
+
+private:
+    // GraphicsDeviceManager로부터 받은 포인터 (소유권 없음)
+    ID3D11Device* m_device;
+    ID3D11DeviceContext* m_deviceContext;
+    IDXGISwapChain* m_swapChain;
+
+    // 이 매니저가 직접 생성하고 소유하는 리소스
+    ID3D11RenderTargetView* m_renderTargetView;
+    ID3D11Texture2D* m_depthStencilBuffer;      // DSV를 만들기 위한 텍스처
+    ID3D11DepthStencilView* m_depthStencilView;
+
+    // Present 시 사용할 VSync 설정
+    bool m_vsync_enabled;
+};
