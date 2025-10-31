@@ -33,7 +33,7 @@ bool SwapChainManager::Initialize(
 
     HRESULT result;
 
-    // --- 1. 렌더 타겟 뷰 (RTV) 생성 (기존 코드 Block 3) ---
+    // 렌더 타겟 뷰 (RTV) 생성
     ID3D11Texture2D* backBufferPtr = nullptr;
     result = m_swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&backBufferPtr);
     if (FAILED(result))
@@ -52,14 +52,14 @@ bool SwapChainManager::Initialize(
     backBufferPtr->Release();
     backBufferPtr = 0;
 
-    // --- 2. 깊이/스텐실 리소스 (DSV) 생성 (기존 코드 Block 4 & 7) ---
+    // 깊이/스텐실 리소스 (DSV) 생성
     result = CreateDepthStencilResources(screenWidth, screenHeight);
     if (FAILED(result))
     {
         return false;
     }
 
-    // --- 3. 렌더 타겟 바인딩 (기존 코드 Block 6) ---
+    // 렌더 타겟 바인딩
     m_deviceContext->OMSetRenderTargets(1, &m_renderTargetView, m_depthStencilView);
 
     return true;
@@ -67,7 +67,6 @@ bool SwapChainManager::Initialize(
 
 void SwapChainManager::Shutdown()
 {
-    // 이 클래스가 '소유'한 리소스만 해제합니다.
     if (m_renderTargetView)
     {
         m_renderTargetView->Release();
@@ -86,26 +85,26 @@ void SwapChainManager::Shutdown()
         m_depthStencilBuffer = nullptr;
     }
 
-    // m_device, m_deviceContext, m_swapChain은 GraphicsDeviceManager가 해제합니다.
+    // m_device, m_deviceContext, m_swapChain은 GraphicsDeviceManager에서 처리
 }
 
 // 윈도우 크기 변경 처리를 위한 함수
 bool SwapChainManager::OnResize(int newWidth, int newHeight)
 {
-    // 1. 기존 RTV, DSV, 깊이 버퍼 해제
+    // 기존 RTV, DSV, 깊이 버퍼 해제
     if (m_renderTargetView) m_renderTargetView->Release();
     if (m_depthStencilView) m_depthStencilView->Release();
     if (m_depthStencilBuffer) m_depthStencilBuffer->Release();
 
-    // 2. 파이프라인에서 렌더 타겟 바인딩 해제 (필수!)
+    // 파이프라인에서 렌더 타겟 바인딩 해제
     m_deviceContext->OMSetRenderTargets(0, 0, 0);
 
-    // 3. 스왑 체인 버퍼 크기 변경
+    // 스왑 체인 버퍼 크기 변경
     HRESULT result = m_swapChain->ResizeBuffers(
-        1,                          // 버퍼 개수 (기존과 동일)
+        1,                          // 버퍼 개수
         newWidth,                   // 새 너비
         newHeight,                  // 새 높이
-        DXGI_FORMAT_R8G8B8A8_UNORM, // 포맷 (기존과 동일)
+        DXGI_FORMAT_R8G8B8A8_UNORM, // 포맷
         0                           // 플래그
     );
     if (FAILED(result))
@@ -113,7 +112,7 @@ bool SwapChainManager::OnResize(int newWidth, int newHeight)
         return false;
     }
 
-    // 4. RTV 재생성
+    // RTV 재생성
     ID3D11Texture2D* backBufferPtr = nullptr;
     result = m_swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&backBufferPtr);
     if (FAILED(result))
@@ -128,7 +127,7 @@ bool SwapChainManager::OnResize(int newWidth, int newHeight)
         return false;
     }
 
-    // 5. DSV 재생성 (새로운 크기로)
+    // 5. DSV 재생성
     result = CreateDepthStencilResources(newWidth, newHeight);
     if (FAILED(result))
     {
@@ -139,13 +138,13 @@ bool SwapChainManager::OnResize(int newWidth, int newHeight)
     m_deviceContext->OMSetRenderTargets(1, &m_renderTargetView, m_depthStencilView);
 
     // 참고: 이 작업이 끝난 후, ViewportManager의 OnResize도 호출하여 
-    // 뷰포트와 투영 행렬을 갱신해야 합니다.
+    // 뷰포트와 투영 행렬을 갱신 필요함
 
     return true;
 }
 
 
-// (BeginScene의 역할을 대체)
+// BeginScene
 void SwapChainManager::ClearRenderTargets(float red, float green, float blue, float alpha)
 {
     float color[4];
@@ -161,7 +160,7 @@ void SwapChainManager::ClearRenderTargets(float red, float green, float blue, fl
     m_deviceContext->ClearDepthStencilView(m_depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 }
 
-// (EndScene의 역할을 대체)
+// EndScene
 void SwapChainManager::Present()
 {
     // VSync 설정에 따라 화면에 프레임을 표시
@@ -174,7 +173,7 @@ bool SwapChainManager::CreateDepthStencilResources(int width, int height)
 {
     HRESULT result;
 
-    // --- 깊이 버퍼 텍스처 생성 (기존 코드 Block 4) ---
+    // 깊이 버퍼 텍스처 생성
     D3D11_TEXTURE2D_DESC depthBufferDesc;
     ZeroMemory(&depthBufferDesc, sizeof(depthBufferDesc));
     depthBufferDesc.Width = width;
@@ -195,7 +194,7 @@ bool SwapChainManager::CreateDepthStencilResources(int width, int height)
         return false;
     }
 
-    // --- 깊이 스텐실 뷰 생성 (기존 코드 Block 7) ---
+    // 깊이 스텐실 뷰 생성
     D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc;
     ZeroMemory(&depthStencilViewDesc, sizeof(depthStencilViewDesc));
     depthStencilViewDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;

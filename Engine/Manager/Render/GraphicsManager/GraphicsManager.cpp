@@ -175,9 +175,6 @@ bool GraphicsManager::Initialize(int screenWidth, int screenHeight, bool vsync, 
         return false;
     }
 
-    // 이 매니저의 역할은 여기까지입니다.
-    // RTV, DSV, State, Viewport 등은 다른 매니저가 이어서 처리합니다.
-
     return true;
 }
 
