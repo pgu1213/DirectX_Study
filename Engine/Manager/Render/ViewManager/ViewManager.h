@@ -6,13 +6,13 @@ public:
     ViewManager();
     ~ViewManager();
 
-    // 뷰포트를 설정하고 투영 행렬들을 생성합니다.
+    // 뷰포트를 설정하고 투영 행렬들을 생성
     bool Initialize(ID3D11DeviceContext* context, int screenWidth, int screenHeight, float screenNear, float screenDepth);
 
-    // 윈도우 크기 변경 시 뷰포트와 투영 행렬을 갱신합니다.
+    // 윈도우 크기 변경 시 뷰포트와 투영 행렬을 갱신
     void OnResize(int newWidth, int newHeight);
 
-    // 카메라 컴포넌트나 렌더러가 사용할 수 있도록 행렬을 반환합니다.
+    // 카메라 컴포넌트나 렌더러가 사용할 수 있도록 행렬을 반환
     const XMMATRIX& GetProjectionMatrix() const { return m_projectionMatrix; }
     const XMMATRIX& GetOrthoMatrix() const { return m_orthoMatrix; }
     const D3D11_VIEWPORT& GetViewport() const { return m_viewport; }

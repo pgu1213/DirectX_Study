@@ -7,7 +7,7 @@ public:
     PipelineStateManager(const PipelineStateManager&);
     ~PipelineStateManager();
 
-    // Device로 상태 객체를 생성하고, Context에 즉시 설정합니다.
+    // Device로 상태 객체를 생성하고, Context에 즉시 설정
     bool Initialize(ID3D11Device* device, ID3D11DeviceContext* context);
     void Shutdown();
 

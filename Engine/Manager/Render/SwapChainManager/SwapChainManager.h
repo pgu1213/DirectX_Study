@@ -7,7 +7,7 @@ public:
     SwapChainManager(const SwapChainManager&);
     ~SwapChainManager();
 
-    // GraphicsDeviceManager로부터 핵심 객체들을 받아 초기화합니다.
+    // GraphicsDeviceManager로부터 핵심 객체들을 초기화
     bool Initialize(
         ID3D11Device* device,
         ID3D11DeviceContext* context,
@@ -17,19 +17,19 @@ public:
         bool vsync
     );
 
-    // 소유한 COM 객체들을 해제합니다.
+    // 소유한 COM 객체들을 해제
     void Shutdown();
 
-    // 윈도우 크기 변경 시 호출될 함수입니다.
+    // 윈도우 크기 변경 시 호출될 함수
     bool OnResize(int newWidth, int newHeight);
 
-    // 렌더링 시작 시 렌더 타겟과 깊이 버퍼를 클리어합니다.
+    // 렌더링 시작 시 렌더 타겟과 깊이 버퍼 클리어
     void ClearRenderTargets(float red, float green, float blue, float alpha);
 
-    // 렌더링 완료 후 스왑 체인을 화면에 표시합니다.
+    // 렌더링 완료 후 스왑 체인을 화면에 표시
     void Present();
 
-    // 외부(예: 렌더러)에서 현재 RTV와 DSV를 가져갈 수 있도록 Getter를 제공합니다.
+    // 외부(EX) 렌더러)에서 현재 RTV와 DSV를 가져갈 수 있도록 Get을 제공
     ID3D11RenderTargetView* GetRenderTargetView() const { return m_renderTargetView; }
     ID3D11DepthStencilView* GetDepthStencilView() const { return m_depthStencilView; }
 
