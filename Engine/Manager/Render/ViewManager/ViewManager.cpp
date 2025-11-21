@@ -6,7 +6,7 @@ ViewManager::ViewManager()
     m_deviceContext = nullptr;
     m_screenNear = 0.0f;
     m_screenDepth = 0.0f;
-    // m_projectionMatrix, m_orthoMatrix는 XMMATRIXIdentity()로 자동 초기화됨
+    // m_projectionMatrix, m_orthoMatrix는 XMMATRIXIdentity()로 자동 초기화
     ZeroMemory(&m_viewport, sizeof(D3D11_VIEWPORT));
 }
 

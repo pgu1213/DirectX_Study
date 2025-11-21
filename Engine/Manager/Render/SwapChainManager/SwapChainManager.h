@@ -1,11 +1,15 @@
 #pragma once
+#include <Engine/Manager/SingletonManager/Singleton.h>
 
-class SwapChainManager
+class SwapChainManager : public Singleton<SwapChainManager>
 {
+	friend class Singleton<SwapChainManager>;
+private:
+    explicit SwapChainManager();
+    explicit SwapChainManager(const SwapChainManager&);
+
 public:
-    SwapChainManager();
-    SwapChainManager(const SwapChainManager&);
-    ~SwapChainManager();
+    virtual ~SwapChainManager();
 
     // GraphicsDeviceManager로부터 핵심 객체들을 초기화
     bool Initialize(
@@ -17,10 +21,9 @@ public:
         bool vsync
     );
 
-    // 소유한 COM 객체들을 해제
     void Shutdown();
 
-    // 윈도우 크기 변경 시 호출될 함수
+    // 윈도우 크기 변경 시 호출
     bool OnResize(int newWidth, int newHeight);
 
     // 렌더링 시작 시 렌더 타겟과 깊이 버퍼 클리어

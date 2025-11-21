@@ -1,10 +1,14 @@
 #pragma once
+#include <Engine/Manager/SingletonManager/Singleton.h>
 
-class ViewManager
+class ViewManager : public Singleton<ViewManager>
 {
+	friend class Singleton<ViewManager>;
+private:
+    explicit ViewManager();
+
 public:
-    ViewManager();
-    ~ViewManager();
+    virtual ~ViewManager();
 
     // 뷰포트를 설정하고 투영 행렬들을 생성
     bool Initialize(ID3D11DeviceContext* context, int screenWidth, int screenHeight, float screenNear, float screenDepth);

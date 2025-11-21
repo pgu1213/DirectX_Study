@@ -1,11 +1,15 @@
 #pragma once
+#include <Engine/Manager/SingletonManager/Singleton.h>
 
-class PipelineStateManager
+class PipelineStateManager : public Singleton<PipelineStateManager>
 {
+	friend class Singleton<PipelineStateManager>;
+private:
+    explicit PipelineStateManager();
+    explicit PipelineStateManager(const PipelineStateManager&);
+
 public:
-    PipelineStateManager();
-    PipelineStateManager(const PipelineStateManager&);
-    ~PipelineStateManager();
+    virtual ~PipelineStateManager();
 
     // Device로 상태 객체를 생성하고, Context에 즉시 설정
     bool Initialize(ID3D11Device* device, ID3D11DeviceContext* context);

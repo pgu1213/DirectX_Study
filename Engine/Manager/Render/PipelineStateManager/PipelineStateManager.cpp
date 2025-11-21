@@ -20,7 +20,7 @@ bool PipelineStateManager::Initialize(ID3D11Device* device, ID3D11DeviceContext*
 
     HRESULT result;
 
-    // --- 1. 깊이/스텐실 상태 생성 (기존 코드 Block 5) ---
+    // 깊이, 스텐실 상태 생성
     D3D11_DEPTH_STENCIL_DESC depthStencilDesc;
     ZeroMemory(&depthStencilDesc, sizeof(depthStencilDesc));
 

@@ -3,44 +3,58 @@
 #include <Engine/Object/Component/Component.h>
 
 class Component;
+class IPrototypeable;
 
-class Object : public IPrototypeable
+class Object : public enable_shared_from_this<Object>
 {
 public:
-    Object() : m_Name("Empty"), m_Tag(""), m_bisActive(true), m_pParent(nullptr) {}
-    explicit Object(const string& name) : m_Name(name), m_Tag(""), m_bisActive(true), m_pParent(nullptr) {}
+    Object();
     Object(const Object& other);
-public:
-    void Update(float DeltaTime);
-    void LateUpdate(float DeltaTime);
-    void Render(HDC hdc);
-public:
-    Transform GetTransform() const { return m_Transform; }
-    string GetName() const { return m_Name; }
-    void SetTransform(const Transform& transform) { m_Transform = transform; }
-    void SetPosition(const Vector2& position) { m_Transform.position = position; }
-    void SetPosition(float x, float y) { m_Transform.position = Vector2(x, y); }
-    void SetRotation(float rotation) { m_Transform.rotation = rotation; }
-    void SetScale(const Vector2& scale) { m_Transform.scale = scale; }
-    void SetScale(float x, float y) { m_Transform.scale = Vector2(x, y); }
-public:
-    unique_ptr<IPrototypeable> Clone() const override; // 프로토타입 패턴 구현
-    void CopyFrom(const IPrototypeable* source) override;
-    Object& operator=(const Object& other); // 복사 할당 연산자
-    void SetActive(bool bActive);
+    virtual ~Object();
+
+    Object& operator=(const Object& other);
+
+    virtual void Init();
+    virtual void Update(float DeltaTime);
+    virtual void LateUpdate(float DeltaTime);
+
+    virtual void Render(ID3D11DeviceContext* context);
+
+    unique_ptr<Object> Clone() const;
+
+    void SetActive(bool bActive) { m_bisActive = bActive; }
+    bool IsActive() const { return m_bisActive; }
+
+    Transform& GetTransform() { return m_Transform; }
+    const Transform& GetTransform() const { return m_Transform; }
+
+    void SetParent(Object* parent);
+
+    template <typename T>
+    void AddComponent(unique_ptr<T> component)
+    {
+        component->SetOwner(this);
+        m_ComponentMap[type_index(typeid(T))] = component.get();
+        m_Components.push_back(move(component));
+    }
+
 private:
     void CloneComponents(const Object& other);
     void CloneChildren(const Object& other);
-private:
-    string m_Name;
-    string m_Tag;
-    bool m_bisActive;
-    bool m_bisStarted = false;
-    Transform m_Transform;
-    Object* m_pParent;
-    vector<Object*> m_Children;
+
+protected:
+    string      m_Name;
+    string      m_Tag;
+    bool        m_bisActive = true;
+    bool        m_bisStarted = false;
+
+    Transform   m_Transform;
+    Object* m_pParent = nullptr;
+
     vector<unique_ptr<Component>> m_Components;
     unordered_map<type_index, Component*> m_ComponentMap;
+
+    vector<Object*> m_Children;
 
 public:
     template<typename T, typename... Args>

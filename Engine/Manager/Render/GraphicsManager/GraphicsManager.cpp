@@ -1,12 +1,15 @@
 #include <pch.h>
 #include "GraphicsManager.h"
+#include <Engine/Manager/Render/SwapChainManager/SwapChainManager.h>
+#include <Engine/Manager/Render/PipelineStateManager/PipelineStateManager.h>
+#include <Engine/Manager/Render/ViewManager/ViewManager.h>
 
 GraphicsManager::GraphicsManager()
 {
     m_device = nullptr;
     m_deviceContext = nullptr;
     m_swapChain = nullptr;
-    m_vsync_enabled = false;
+    m_BIsVsync = false;
     m_videoCardMemory = 0;
     m_videoCardDescription[0] = '\0';
 }
@@ -31,7 +34,7 @@ bool GraphicsManager::Initialize(int screenWidth, int screenHeight, bool vsync, 
     D3D_FEATURE_LEVEL featureLevel;
 
     // vsync 설정
-    m_vsync_enabled = vsync;
+    m_BIsVsync = vsync;
 
     // 어댑터 및 모니터 정보 탐색
     // DirectX 그래픽 인터페이스 팩토리를 생성
@@ -142,7 +145,7 @@ bool GraphicsManager::Initialize(int screenWidth, int screenHeight, bool vsync, 
     swapChainDesc.BufferDesc.Height = screenHeight;
     swapChainDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 
-    if (m_vsync_enabled)
+    if (m_BIsVsync)
     {
         swapChainDesc.BufferDesc.RefreshRate.Numerator = numerator;
         swapChainDesc.BufferDesc.RefreshRate.Denominator = denominator;
@@ -173,6 +176,25 @@ bool GraphicsManager::Initialize(int screenWidth, int screenHeight, bool vsync, 
     if (FAILED(result))
     {
         return false;
+    }
+
+	// 서브 매니저 초기화
+    if (!SwapChainManager::GetInstance()->Initialize(m_device, m_deviceContext, m_swapChain, WINCX ,WINCY, false))
+    {
+		printf("Failed to initialize SwapChainManager.\n");
+		return false;
+    }
+
+    if (!PipelineStateManager::GetInstance()->Initialize(m_device, m_deviceContext))
+    {
+		printf("Failed to initialize PipelineStateManager.\n");
+		return false;
+    }
+
+    if (!ViewManager::GetInstance()->Initialize(m_deviceContext, WINCX, WINCY, 10, 100))
+    {
+		printf("Failed to initialize ViewManager.\n");
+		return false;
     }
 
     return true;

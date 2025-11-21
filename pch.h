@@ -4,10 +4,15 @@
 
 // STL
 #include <iostream>
+#include <filesystem>
+#include <fstream>
+#pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")
+
 #include "framework.h"
 #include <string>
 #include <cmath>
 #include <vector>
+#include <map>
 #include <unordered_map>
 #include <memory>
 #include <typeindex>

@@ -45,6 +45,8 @@ bool SwapChainManager::Initialize(
     if (FAILED(result))
     {
         backBufferPtr->Release(); // 실패 시에도 릴리즈
+		printf("Failed to create render target view.\n");
+		system("pause");
         return false;
     }
 
@@ -56,6 +58,8 @@ bool SwapChainManager::Initialize(
     result = CreateDepthStencilResources(screenWidth, screenHeight);
     if (FAILED(result))
     {
+        printf("Failed to create DepthStencil.\n");
+        system("pause");
         return false;
     }
 

@@ -24,7 +24,7 @@ public:
     void GetVideoCardInfo(char* cardName, int& memory);
 
 private:
-    bool m_vsync_enabled;
+    bool m_BIsVsync;
     int m_videoCardMemory;
     char m_videoCardDescription[128];
 

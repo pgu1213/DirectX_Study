@@ -9,7 +9,7 @@ private:
 public:
 	virtual ~EngineSystem();
 public:
-	bool Initialize();
+	bool Initialize(int screenWidth, int screenHeight, HWND hwnd);
 	void LateInitialize();
 	void Update();
 	void Render(HDC hdc);

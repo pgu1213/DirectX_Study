@@ -1,6 +1,10 @@
 #include <pch.h>
 #include "Object.h"
 
+Object::Object()
+{
+}
+
 Object::Object(const Object& other)
     : m_Name(other.m_Name + "_Clone")
     , m_Tag(other.m_Tag)
@@ -10,6 +14,19 @@ Object::Object(const Object& other)
 {
     CloneComponents(other);
     CloneChildren(other);
+}
+
+Object::~Object()
+{
+    for (auto* child : m_Children)
+    {
+        delete child;
+    }
+    m_Children.clear();
+}
+
+void Object::Init()
+{
 }
 
 void Object::Update(float DeltaTime)
@@ -26,13 +43,24 @@ void Object::Update(float DeltaTime)
         m_bisStarted = true;
     }
 
+    // Transform(월드 행렬) 계산
+    // 부모가 있다면 부모의 월드 행렬을 기반으로 내 월드 행렬 계산
+    XMMATRIX* parentMatrix = nullptr;
+    if (m_pParent)
+    {
+        parentMatrix = &m_pParent->GetTransform().WorldMatrix;
+    }
+    m_Transform.UpdateTransform(parentMatrix);
+
+
+    // 3. 컴포넌트 업데이트
     for (auto& component : m_Components)
     {
         if (component->IsEnabled())
             component->Update(DeltaTime);
     }
 
-    // 자식 오브젝트 업데이트
+    // 4. 자식 오브젝트 업데이트
     for (auto* child : m_Children)
     {
         child->Update(DeltaTime);
@@ -55,38 +83,29 @@ void Object::LateUpdate(float DeltaTime)
     }
 }
 
-void Object::Render(HDC hdc)
+void Object::Render(ID3D11DeviceContext* context)
 {
     if (!m_bisActive) return;
 
+    // 컴포넌트가 있다면 여기서 Transform의 WorldMatrix를 셰이더 상수 버퍼로 보낸 뒤 DrawCall을 수행
     for (auto& component : m_Components)
     {
         if (component->IsEnabled())
-            component->Render(hdc);
+            component->Render(context);
     }
 
+    // 자식 렌더링
     for (auto* child : m_Children)
     {
-        child->Render(hdc);
+        child->Render(context);
     }
 }
 
-// 프로토타입 클론 생성
-unique_ptr<IPrototypeable> Object::Clone() const
+unique_ptr<Object> Object::Clone() const
 {
     return make_unique<Object>(*this);
 }
 
-void Object::CopyFrom(const IPrototypeable* source)
-{
-    const Object* sourceObj = dynamic_cast<const Object*>(source);
-    if (sourceObj)
-    {
-        *this = *sourceObj;
-    }
-}
-
-// 복사 할당 연산자
 Object& Object::operator=(const Object& other)
 {
     if (this != &other)
@@ -97,18 +116,15 @@ Object& Object::operator=(const Object& other)
         m_Transform = other.m_Transform;
         m_pParent = nullptr;
 
-        // 기존에 가지고 있던 컴포넌트는 정리
         m_Components.clear();
         m_ComponentMap.clear();
 
-        // 기존 자식도 정리
         for (auto* child : m_Children)
         {
             delete child;
         }
         m_Children.clear();
 
-        // 새로운 데이터 복사
         CloneComponents(other);
         CloneChildren(other);
     }
@@ -119,12 +135,10 @@ void Object::CloneComponents(const Object& other)
 {
     for (const auto& component : other.m_Components)
     {
-        // 새로운 소유자 설정
         auto clonedComponent = component->Clone();
         Component* ptr = static_cast<Component*>(clonedComponent.get());
         ptr->SetOwner(this);
 
-        // 소유권 이전
         m_Components.push_back(unique_ptr<Component>(ptr));
         m_ComponentMap[type_index(typeid(*ptr))] = ptr;
         clonedComponent.release();
@@ -135,13 +149,14 @@ void Object::CloneChildren(const Object& other)
 {
     for (const Object* child : other.m_Children)
     {
-        auto clonedChild = make_unique<Object>(*child);
-        // TODO - clonedChild->SetParent(this);
+        unique_ptr<Object> clonedChild = child->Clone();
+        clonedChild->SetParent(this);
+
         m_Children.push_back(clonedChild.release());
     }
 }
 
-void Object::SetActive(bool bActive)
+void Object::SetParent(Object* parent)
 {
-    m_bisActive = bActive;
+    m_pParent = parent;
 }

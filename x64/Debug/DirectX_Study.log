@@ -1,17 +1,18 @@
-﻿  PrototypeFactory.cpp
-  PrototypeManager.cpp
-  Component.cpp
-  DirectX_Study.cpp
-C:\Study\DirectX_Study\DirectX_Study\DirectX_Study.cpp(98,1): warning C4002: 함수 같은 매크로 호출 'CreateWindowW'에 대해 인수가 너무 많습니다.
+﻿  DirectX_Study.cpp
+C:\Study\DirectX_Study\DirectX_Study\DirectX_Study.cpp(92,1): warning C4002: 함수 같은 매크로 호출 'CreateWindowW'에 대해 인수가 너무 많습니다.
   EngineSystem.cpp
-  TimeManager.cpp
   InputManager.cpp
+  PrototypeFactory.cpp
+  PrototypeManager.cpp
+  GraphicsManager.cpp
+  PipelineStateManager.cpp
+  SwapChainManager.cpp
+  ViewManager.cpp
+  ResourceManager.cpp
+  TimeManager.cpp
+  Component.cpp
   IPrototypeable.cpp
   Object.cpp
-  GraphicsManager.cpp
-  SwapChainManager.cpp
-  PipelineStateManager.cpp
-  ViewManager.cpp
   코드를 생성하고 있습니다...
-C:\Study\DirectX_Study\DirectX_Study\DirectX_Study.cpp(66,1): warning C4715: 'wWinMain': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Study\DirectX_Study\DirectX_Study\DirectX_Study.cpp(60,1): warning C4715: 'wWinMain': 모든 제어 경로에서 값을 반환하지는 않습니다.
   DirectX_Study.vcxproj -> C:\Study\DirectX_Study\x64\Debug\DirectX_Study.exe
